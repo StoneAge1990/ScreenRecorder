@@ -386,7 +386,7 @@ namespace ScreenRecorder
             {
                 if (AppManager.Instance.ScreenEncoder.Status != Encoder.EncoderStatus.Stop)
                     return;
-
+                // forces closing of advanced settings (s. MainWindow.xaml)
                 AppManager.Instance.RecordSettingChecked = false;
                 SelectDisplayAndRect(o);
             }));
