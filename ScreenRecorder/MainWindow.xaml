@@ -451,7 +451,7 @@
                                             <TextBlock Grid.Column="0" Grid.Row="5" Text="{x:Static properties:Resources.EncoderFrameRate}" Margin="3" />
                                             <TextBlock Grid.Column="0" Grid.Row="6" Text="{x:Static properties:Resources.EncoderCaptureDisplay}" Margin="3" />
                                             <TextBlock Grid.Column="0" Grid.Row="9" Text="{x:Static properties:Resources.EncoderBaseDirectory}" Margin="3" />
-                                            <TextBlock Grid.Column="0" Grid.Row="10" Text="TimeControlled" Margin="3" />
+                                            <TextBlock Grid.Column="0" Grid.Row="10" Text="Time Control" Margin="3" />
 
                                             <ComboBox
                                                 Grid.Column="1"
@@ -573,6 +573,8 @@
                                                     <TextBox IsEnabled="{Binding Source={x:Static local:AppConfig.Instance}, Path=ForceSourceSize}" Margin="3" MinWidth="40" PreviewTextInput="NumberValidation" VerticalAlignment="Center" Text="{Binding Source={x:Static local:AppConfig.Instance}, Path=ForcedSourceWidth, Mode=TwoWay}"/>
                                                     <TextBlock Text="Height:" Foreground="White" VerticalAlignment="Center" Margin="5,2,0,5"/>
                                                     <TextBox IsEnabled="{Binding Source={x:Static local:AppConfig.Instance}, Path=ForceSourceSize}" Margin="3" MinWidth="40" PreviewTextInput="NumberValidation" VerticalAlignment="Center" Text="{Binding Source={x:Static local:AppConfig.Instance}, Path=ForcedSourceHeight, Mode=TwoWay}"/>
+                                                    <TextBlock Text="Crop Y:" Foreground="White" VerticalAlignment="Center" Margin="5,2,0,5"/>
+                                                    <TextBox IsEnabled="{Binding Source={x:Static local:AppConfig.Instance}, Path=ForceSourceSize}" Margin="3" MinWidth="40" PreviewTextInput="NumberValidation" VerticalAlignment="Center" Text="{Binding Source={x:Static local:AppConfig.Instance}, Path=SourceCropY, Mode=TwoWay}"/>
                                                 </StackPanel>
                                             </Grid>
                                             <Grid Grid.Column="1" Grid.Row="9">

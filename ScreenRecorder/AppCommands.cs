@@ -238,6 +238,13 @@ namespace ScreenRecorder
                         region = Region.WindowRegion.GetWindowRectangle(result.Hwnd);
                         // shift absolute coordinates relative to screen with 0,0 as left,top
                         region.Offset(-monitorInfo.Left, -monitorInfo.Top);
+                        // allow cropping in the case of black stripes symmetrically
+                        int cropY = AppConfig.Instance.SourceCropY;
+                        if (cropY > 0)
+                        {
+                            region.Y += cropY;
+                            region.Height -= 2 * cropY;
+                        }
                     }
                     else
                     {

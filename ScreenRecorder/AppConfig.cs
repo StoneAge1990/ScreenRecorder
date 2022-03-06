@@ -96,6 +96,7 @@ namespace ScreenRecorder
                 config.Add(nameof(ForceSourceSize), ForceSourceSize.ToString());
                 config.Add(nameof(ForcedSourceHeight), ForcedSourceHeight.ToString());
                 config.Add(nameof(ForcedSourceWidth), ForcedSourceWidth.ToString());
+                config.Add(nameof(SourceCropY), SourceCropY.ToString());
 
                 Config.Config.SaveToFile(filePath, config);
             }
@@ -148,6 +149,7 @@ namespace ScreenRecorder
                     ForceSourceSize = Config.Config.GetBool(config, nameof(ForceSourceSize), ForceSourceSize);
                     ForcedSourceWidth = Config.Config.GetInt32(config, nameof(ForcedSourceWidth), ForcedSourceWidth);
                     ForcedSourceHeight = Config.Config.GetInt32(config, nameof(ForcedSourceHeight), ForcedSourceHeight);
+                    SourceCropY = Config.Config.GetInt32(config, nameof(SourceCropY), SourceCropY);
                 }
             }
         }
@@ -181,6 +183,7 @@ namespace ScreenRecorder
             ForceSourceSize = false;
             ForcedSourceWidth = 1280;   // HDREADY
             ForcedSourceHeight = 720;   // HDREADY
+            SourceCropY = 0;            // symmetrical cropping to avoid black stripes
 
             CaptureTimeControlled = false;
             CaptureStartTime = DateTime.Now;
@@ -389,6 +392,13 @@ namespace ScreenRecorder
             set => SetProperty(ref forcedSourceHeight, value);
         }
 
+        private int sourceCropY;
+        public int SourceCropY
+        {
+            get => sourceCropY;
+            set => SetProperty(ref sourceCropY, value);
+        }
+        
         #endregion
 
         #region Time controlled capture

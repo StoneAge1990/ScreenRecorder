@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -200,6 +201,18 @@ namespace ScreenRecorder.Region
                         windowRegion.Offset(-_minLeft, -_minTop);
                         pathGeometry.AddGeometry(new RectangleGeometry(windowRegion));
                         dc.DrawRectangle(null, selectorPen, windowRegion);
+
+                        int cy = AppConfig.Instance.ForcedSourceHeight;
+                        int cropY = AppConfig.Instance.SourceCropY;
+                        // draw optional cropping lines
+                        if (AppConfig.Instance.ForceSourceSize && cy > 0 && cropY > 0 && RegionSelectionMode == RegionSelectionMode.WindowRegion)
+                        {
+                            double offsetY = (windowRegion.Height * cropY) / cy;
+                            double y = windowRegion.Top + offsetY;
+                            dc.DrawLine(selectorPen, new Point(windowRegion.Left, y), new Point(windowRegion.Right, y));
+                            y = windowRegion.Bottom - offsetY;
+                            dc.DrawLine(selectorPen, new Point(windowRegion.Left, y), new Point(windowRegion.Right, y));
+                        }
                     }
                     break;
             }
